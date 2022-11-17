@@ -17,7 +17,7 @@ const Posts= () => {
     newPosts[id].author="New author";
     newPosts[id].id= 200;
 
-    // setPosts(newPosts);
+  setPosts(newPosts);
     
   };
 
