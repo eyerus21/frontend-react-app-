@@ -1,27 +1,24 @@
-import { useState } from "react";
-import Posts from '../Posts/Posts';
+//import './Post.css';
+const Post = (props) => {
 
-const Post= () => {
-    const [posts, setPosts]= useState([
-
-        {id:111, title: "happiness", author:"Jhon"},
-        {id:112, title:"MIU", author:"Dean"},
-        {id:113, title:"enjoy life", author: "Jasmine"}
-    ])
+    const posts = props.posts;
 
 
-    // return ( 
-    //     <div className="post">
-    //         {/* Hello */}
-    //         <Posts post={posts}/>
-    //     </div>
-    //  );
+    return ( 
+        <div className="posts">
+             {
+         posts.map(post => (
+            <div className="post-preview" key={post.id} >
+              <h2>{post.title }</h2>
+              <p>ID { post.id}</p>
+              <p>Written by { post.author}</p>
+            </div>
+          ))}
 
-     return(
-        <div className="post">
-        <Posts posts={posts} />
-    </div>
-    );
+
+        </div>
+
+     );
 }
  
 export default Post;

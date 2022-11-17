@@ -1,22 +1,20 @@
-import Post from "../Post/Post";
+import Posts from "../Posts/Posts";
+import ChangeTitle from "./ChangeTitle";
+
 const Dashboard = () => {
 
-    // const textField= <input type="text" />
-    // const buttonfield= 
 
+
+    
+    
     return (  
-        <nav className="navbar">
+        <div className="navbar">
 
-            <Post/> 
-            <input type="text" />
-            <button>Change Name</button>
+            <Posts/> 
+            <ChangeTitle/>
 
-            
-        </nav>
+        </div>
         
-);
-
-
-}
+);}
  
 export default Dashboard;
