@@ -1,24 +1,18 @@
 //import './Post.css';
 const Post = (props) => {
 
-    const posts = props.posts;
+    const post = props.post;
 
 
     return ( 
-        <div className="posts">
-             {
-         posts.map(post => (
-            <div className="post-preview" key={post.id} >
+       
+            <div className="post-preview" onClick={() => props.changeActivePost(props.post)}>
               <h2>{post.title }</h2>
               <p>ID { post.id}</p>
               <p>Written by { post.author}</p>
             </div>
-          ))}
-
-
-        </div>
-
-     );
+          
+        );
 }
  
 export default Post;
