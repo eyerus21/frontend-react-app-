@@ -1,14 +1,12 @@
 import Posts from "../Posts/Posts";
 import ChangeTitle from "./ChangeTitle";
-import {useState, useEffect,createContext,useContext} from 'react';
+import {useState, useEffect} from 'react';
 import PostDetails from "../PostDetails/PostDetails";
 import axios from "axios";
 
-export const ActivePostContext= createContext();
-
 const Dashboard = () => {
 
-
+    
     const [posts, setPosts]= useState([
     
         {id:111, title: "happiness", author:"Jhon"},
@@ -20,7 +18,7 @@ const Dashboard = () => {
     const [activePost, setActivePost]=useState(null);
 
     const changeActivePost= (post) => {
-        
+
         setActivePost(post);
 
     }
@@ -46,13 +44,14 @@ const Dashboard = () => {
 
   
     return  (
-    <ActivePostContext.Provider value={{activePost,setActivePost}}>
-
+    <>
     <Posts posts={posts} changeActivePost={changeActivePost}/> 
     <ChangeTitle titleChangeHandler={titleChangeHandler}/>
-    <PostDetails />
-  
-    </ActivePostContext.Provider>
+    <PostDetails activePost={activePost}/>
+    
+   
+
+    </>
     );
         
 }
