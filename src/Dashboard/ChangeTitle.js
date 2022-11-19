@@ -7,7 +7,15 @@ const ChangeTitle = (props) => {
     const onclickChangeTitle = () => {
 
         const form=  newPostForm.current;
-        props.titleChangeHandler(form.title.value);  
+        const post= {
+                title: form.title.value,
+                author: form.author.value,
+                content: form.content.value
+            
+        };
+
+        
+        props.titleChangeHandler(post);  
 
     }
    
@@ -16,9 +24,26 @@ const ChangeTitle = (props) => {
         <div className="container">
 
             <form ref={newPostForm}>
-
-                <label >title</label>
+            <div>
+                <label >title </label>
                 <input type="text" name ="title"/>
+                </div>
+                <br/>  
+
+             <div>
+                 <label >content </label>
+                <input type="text" name ="content"/>
+
+                </div> 
+                <br/>  
+                
+                <div>
+                <label >author </label>
+                <input type="text" name ="author"/>
+                
+                </div>
+                <br/>  
+              
                
             </form>
             <div className="button">

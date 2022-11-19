@@ -1,12 +1,14 @@
 import Posts from "../Posts/Posts";
 import ChangeTitle from "./ChangeTitle";
-import {useState, useEffect} from 'react';
+import {useState, useEffect,createContext,useContext} from 'react';
 import PostDetails from "../PostDetails/PostDetails";
 import axios from "axios";
 
+export const ActivePostContext= createContext();
+
 const Dashboard = () => {
 
-    
+
     const [posts, setPosts]= useState([
     
         {id:111, title: "happiness", author:"Jhon"},
@@ -14,20 +16,21 @@ const Dashboard = () => {
         {id:113, title:"enjoy life", author: "Jasmine"}
     ])
 
+
     const [activePost, setActivePost]=useState(null);
 
     const changeActivePost= (post) => {
-
-        // console.log("Jerriwaye");
+        
         setActivePost(post);
 
     }
     
-    const titleChangeHandler = (title) => {
-        let newPosts= [...posts];
-        console.log(newPosts);
-        newPosts[0].title= title;
-        setPosts(newPosts);
+    const titleChangeHandler = (post) => {
+       
+        axios.post("http://localhost:8080/api/v1/posts",post)
+                .then(response => console.log(response))
+                .catch(error => console.log(error))
+             
 
     } 
 
@@ -43,14 +46,13 @@ const Dashboard = () => {
 
   
     return  (
-    <>
+    <ActivePostContext.Provider value={{activePost,setActivePost}}>
+
     <Posts posts={posts} changeActivePost={changeActivePost}/> 
     <ChangeTitle titleChangeHandler={titleChangeHandler}/>
-    <PostDetails activePost={activePost}/>
-    
-   
-
-    </>
+    <PostDetails />
+  
+    </ActivePostContext.Provider>
     );
         
 }
