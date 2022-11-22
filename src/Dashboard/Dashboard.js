@@ -46,9 +46,9 @@ const Dashboard = () => {
 
   
     return  (
-    <ActivePostContext.Provider value={{activePost,setActivePost}}>
+    <ActivePostContext.Provider value={{activePost,setActivePost,posts}}>
 
-    <Posts posts={posts} changeActivePost={changeActivePost}/> 
+    <Posts /> 
     <ChangeTitle titleChangeHandler={titleChangeHandler}/>
     <PostDetails />
   
